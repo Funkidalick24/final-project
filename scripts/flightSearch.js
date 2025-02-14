@@ -17,7 +17,7 @@ class FlightSearch {
         
         this.config = {
             apiEndpoint: 'https://sky-scrapper.p.rapidapi.com/api/v2/flights/searchFlightsComplete',
-            airportDataPath: 'js/json/airports.json',
+            airportDataPath: '../json/airports.json',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
