@@ -23,6 +23,10 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
+        bookings: resolve(__dirname, 'pages/bookings.html'),
+        itinerary: resolve(__dirname, 'pages/itinerary.html'),
+        explore: resolve(__dirname, 'pages/explore.html'),
+        profile: resolve(__dirname, 'pages/profile.html')
       },
       output: {
         // Configure chunks
@@ -30,16 +34,20 @@ export default defineConfig({
         entryFileNames: 'js/[name]-[hash].js',
         assetFileNames: 'assets/[name]-[hash][extname]',
       },
+      external: [
+        '/public/json/airports.json'
+      ]
     },
   },
   
   // Resolve file extensions and aliases
   resolve: {
     alias: {
-      '@': resolve(__dirname, 'src'),
-      '@scripts': resolve(__dirname, 'scripts'),
-      '@styles': resolve(__dirname, 'styles'),
-      '@assets': resolve(__dirname, 'assets'),
+      '@': resolve(__dirname, './src'),
+      '@scripts': resolve(__dirname, './src/scripts'),
+      '@styles': resolve(__dirname, './src/styles'),
+      '@assets': resolve(__dirname, './src/assets'),
+      '@public': resolve(__dirname, './public')
     },
   },
   
@@ -57,7 +65,7 @@ export default defineConfig({
     // Configure preprocessors if needed
     preprocessorOptions: {
       scss: {
-        additionalData: `@import "@styles/variables.scss";`,
+        additionalData: `@import "@styles/_variables.scss";`,
       },
     },
   },
