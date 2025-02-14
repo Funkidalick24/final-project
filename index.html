@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelPlanner - Home</title>
+    <link rel="stylesheet" href="src/styles/main.scss">
+    <script src="scripts/currencyConverter.js" defer></script>
+    <script src="scripts/infoCards.js" defer></script>
+    <script src="scripts/attractionsCarousel.js" defer></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">TravelPlanner</div>
+        <ul class="nav-links">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="pages/itinerary.html">Itinerary</a></li>
+            <li><a href="pages/bookings.html">Bookings</a></li>
+            <li><a href="pages/explore.html">Explore</a></li>
+            <li><a href="pages/profile.html">Profile</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <section class="hero">
+            <picture class="hero-image">
+                <!-- Small screens (mobile) -->
+                <source 
+                    srcset="images/hero-small.jpg"
+                    media="(max-width: 480px)"
+                >
+                <!-- Medium screens (tablets) -->
+                <source 
+                    srcset="images/hero-medium.jpg"
+                    media="(max-width: 768px)"
+                >
+                <!-- Large screens (desktop) -->
+                <source 
+                    srcset="images/hero-large.jpg"
+                    media="(min-width: 769px)"
+                >
+                <!-- Fallback image -->
+                <img 
+                    src="images/hero-fallback.jpg" 
+                    alt="Travel destinations collage"
+                    class="hero-img"
+                >
+            </picture>
+            <div class="hero-content">
+                <h1>Plan Your Perfect Journey</h1>
+                <p>Discover amazing destinations and create unforgettable memories</p>
+                <button class="cta-button">Start Planning</button>
+                <div class="info-cards">
+                    <!-- Weather Card -->
+                    <div class="info-card weather-card">
+                        <h3>Weather</h3>
+                        <div class="weather-search-container">
+                            <input 
+                                type="text" 
+                                class="weather-search" 
+                                placeholder="Search city..."
+                                value="Paris, FR"
+                            >
+                            <div class="city-list"></div>
+                        </div>
+                        <div class="weather-info">
+                            <!-- Weather info will be populated here -->
+                        </div>
+                    </div>
+                    
+                    <!-- News Card -->
+                    <div class="info-card news-card">
+                        <h3>Travel News</h3>
+                        <div class="news-list">
+                            <div class="news-item">
+                                <h4>New Direct Flights to Bali</h4>
+                                <p>Airlines announce increased routes to popular destinations</p>
+                            </div>
+                            <div class="news-item">
+                                <h4>Top Summer Destinations 2024</h4>
+                                <p>Discover this year's trending travel spots</p>
+                            </div>
+                            <div class="news-item">
+                                <h4>Travel Tips: Packing Light</h4>
+                                <p>Expert advice for efficient travel</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Exchange Rates Card -->
+                    <div class="info-card exchange-card">
+                        <h3>Live Exchange Rates</h3>
+                        <div class="exchange-rates">
+                            <div class="rate">
+                                <span>USD/EUR:</span>
+                                <span class="rate-value">0.85</span>
+                            </div>
+                            <div class="rate">
+                                <span>USD/GBP:</span>
+                                <span class="rate-value">0.73</span>
+                            </div>
+                            <div class="rate">
+                                <span>USD/JPY:</span>
+                                <span class="rate-value">110.45</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+         <section class="featured-destinations">
+            <h2>Popular Destinations</h2>
+            <div class="destination-grid">
+                <div class="destination-carousel">
+                    <button class="carousel-btn prev-btn">❮</button>
+                    <div class="destination-cards">
+                        <!-- Destination cards will be populated here -->
+                    </div>
+                    <button class="carousel-btn next-btn">❯</button>
+                </div>
+                <div class="carousel-dots">
+                    <!-- Dots will be added dynamically -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Add currency converter section -->
+        <section class="currency-converter">
+            <h2>Currency Converter</h2>
+            <div class="converter-container">
+                <div class="amount-container">
+                    <input type="number" id="amount" placeholder="Amount" value="1">
+                </div>
+                <div class="currency-selectors">
+                    <div class="from-currency">
+                        <label for="fromCurrency">From:</label>
+                        <select id="fromCurrency">
+                            <option value="USD">USD - United States Dollar</option>
+                            <option value="EUR">EUR - Euro</option>
+                            <option value="GBP">GBP - British Pound</option>
+                            <option value="JPY">JPY - Japanese Yen</option>
+                            <option value="AUD">AUD - Australian Dollar</option>
+                            <option value="CAD">CAD - Canadian Dollar</option>
+                            <option value="CHF">CHF - Swiss Franc</option>
+                            <option value="CNY">CNY - Chinese Renminbi</option>
+                            <option value="HKD">HKD - Hong Kong Dollar</option>
+                            <option value="NZD">NZD - New Zealand Dollar</option>
+                            <option value="SEK">SEK - Swedish Krona</option>
+                            <option value="KRW">KRW - South Korean Won</option>
+                            <option value="SGD">SGD - Singapore Dollar</option>
+                            <option value="NOK">NOK - Norwegian Krone</option>
+                            <option value="MXN">MXN - Mexican Peso</option>
+                            <option value="INR">INR - Indian Rupee</option>
+                            <option value="RUB">RUB - Russian Ruble</option>
+                            <option value="ZAR">ZAR - South African Rand</option>
+                            <option value="TRY">TRY - Turkish Lira</option>
+                            <option value="BRL">BRL - Brazilian Real</option>
+                        </select>
+                    </div>
+                    <button id="swapCurrency">⇄</button>
+                    <div class="to-currency">
+                        <label for="toCurrency">To:</label>
+                        <select id="toCurrency">
+                            <option value="EUR">EUR - Euro</option>
+                            <option value="USD">USD - United States Dollar</option>
+                            <option value="GBP">GBP - British Pound</option>
+                            <option value="JPY">JPY - Japanese Yen</option>
+                            <option value="AUD">AUD - Australian Dollar</option>
+                            <option value="CAD">CAD - Canadian Dollar</option>
+                            <option value="CHF">CHF - Swiss Franc</option>
+                            <option value="CNY">CNY - Chinese Renminbi</option>
+                            <option value="HKD">HKD - Hong Kong Dollar</option>
+                            <option value="NZD">NZD - New Zealand Dollar</option>
+                            <option value="SEK">SEK - Swedish Krona</option>
+                            <option value="KRW">KRW - South Korean Won</option>
+                            <option value="SGD">SGD - Singapore Dollar</option>
+                            <option value="NOK">NOK - Norwegian Krone</option>
+                            <option value="MXN">MXN - Mexican Peso</option>
+                            <option value="INR">INR - Indian Rupee</option>
+                            <option value="RUB">RUB - Russian Ruble</option>
+                            <option value="ZAR">ZAR - South African Rand</option>
+                            <option value="TRY">TRY - Turkish Lira</option>
+                            <option value="BRL">BRL - Brazilian Real</option>
+                        </select>
+                    </div>
+                </div>
+                <button id="convertBtn">Convert</button>
+                <div id="result" class="result">
+                    <p class="date">Last Updated: <span id="conversionDate">-</span></p>
+                    <p> = <span id="conversionRate"></span></p>
+                    <p>Converted Amount: <span id="convertedAmount"></span></p>
+                </div>
+            </div>
+        </section>
+
+       
+    </main>
+
+    <footer>
+        <p>&copy; 2024 TravelPlanner. All rights reserved.</p>
+    </footer>
+    <script type="module" src="src/scripts/flightSearch.js"></script>
+</body>
+</html> 

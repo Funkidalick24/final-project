@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelPlanner - Bookings</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/bookings.css">
+    <script src="../scripts/flightSearch.js" defer></script>
+    <script src="../scripts/bookingTabs.js" defer></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">TravelPlanner</div>
+        <ul class="nav-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="itinerary.html">Itinerary</a></li>
+            <li><a href="bookings.html" class="active">Bookings</a></li>
+            <li><a href="explore.html">Explore</a></li>
+            <li><a href="profile.html">Profile</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <div class="booking-tabs">
+            <button class="tab-btn active" data-tab="flights">Flights</button>
+            <button class="tab-btn" data-tab="hotels">Hotels</button>
+            <button class="tab-btn" data-tab="cars">Car Hire</button>
+        </div>
+
+        <section class="booking-section flight-search active" id="flights-section">
+            <h2>Search Flights</h2>
+            <form id="flightSearchForm" class="search-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="fromAirport">From</label>
+                        <input 
+                            type="text" 
+                            id="fromAirport" 
+                            placeholder="Airport code (e.g., LHR)"
+                            required
+                            pattern="[A-Z]{3}"
+                            title="Please enter a valid 3-letter airport code"
+                        >
+                    </div>
+                    <button type="button" id="swapAirports" class="swap-btn">⇄</button>
+                    <div class="form-group">
+                        <label for="toAirport">To</label>
+                        <input 
+                            type="text" 
+                            id="toAirport" 
+                            placeholder="Airport code (e.g., DXB)"
+                            required
+                            pattern="[A-Z]{3}"
+                            title="Please enter a valid 3-letter airport code"
+                        >
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="departDate">Departure</label>
+                        <input 
+                            type="date" 
+                            id="departDate" 
+                            required
+                            min=""
+                        >
+                    </div>
+                    <div class="form-group">
+                        <label for="flightStatus">Flight Status</label>
+                        <select id="flightStatus">
+                            <option value="">All Statuses</option>
+                            <option value="scheduled">Scheduled</option>
+                            <option value="active">Active</option>
+                            <option value="landed">Landed</option>
+                            <option value="cancelled">Cancelled</option>
+                            <option value="diverted">Diverted</option>
+                            <option value="incident">Incident</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="passengers">Passengers</label>
+                        <input 
+                            type="number" 
+                            id="passengers" 
+                            min="1" 
+                            max="9" 
+                            value="1" 
+                            required
+                        >
+                    </div>
+                    <div class="form-group">
+                        <label for="cabinClass">Cabin Class</label>
+                        <select id="cabinClass" required>
+                            <option value="economy">Economy</option>
+                            <option value="business">Business</option>
+                            <option value="first">First Class</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="currency">Currency</label>
+                        <select id="currency" required>
+                            <option value="USD">USD</option>
+                            <option value="EUR">EUR</option>
+                            <option value="GBP">GBP</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" class="search-btn">Search Flights</button>
+            </form>
+
+            <div id="searchResults" class="search-results">
+                <!-- Results will be populated here -->
+            </div>
+        </section>
+
+        <section class="booking-section hotel-search" id="hotels-section">
+            <h2>Search Hotels</h2>
+            <form id="hotelSearchForm" class="search-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="destination">Destination</label>
+                        <input 
+                            type="text" 
+                            id="destination" 
+                            placeholder="City, region, or property"
+                            required
+                        >
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="checkIn">Check-in</label>
+                        <input 
+                            type="date" 
+                            id="checkIn" 
+                            required
+                            min=""
+                        >
+                    </div>
+                    <div class="form-group">
+                        <label for="checkOut">Check-out</label>
+                        <input 
+                            type="date" 
+                            id="checkOut" 
+                            required
+                            min=""
+                        >
+                    </div>
+                    <div class="form-group">
+                        <label for="rooms">Rooms</label>
+                        <input 
+                            type="number" 
+                            id="rooms" 
+                            min="1" 
+                            max="5" 
+                            value="1" 
+                            required
+                        >
+                    </div>
+                    <div class="form-group">
+                        <label for="guests">Guests</label>
+                        <input 
+                            type="number" 
+                            id="guests" 
+                            min="1" 
+                            max="10" 
+                            value="2" 
+                            required
+                        >
+                    </div>
+                </div>
+                <button type="submit" class="search-btn">Search Hotels</button>
+            </form>
+            <div id="hotelResults" class="search-results">
+                <!-- Hotel results will be populated here -->
+            </div>
+        </section>
+
+        <section class="booking-section car-search" id="cars-section">
+            <h2>Search Car Hire</h2>
+            <form id="carSearchForm" class="search-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="pickupLocation">Pickup Location</label>
+                        <input 
+                            type="text" 
+                            id="pickupLocation" 
+                            placeholder="City or airport"
+                            required
+                        >
+                    </div>
+                    <div class="form-group">
+                        <label for="dropoffLocation">Drop-off Location</label>
+                        <input 
+                            type="text" 
+                            id="dropoffLocation" 
+                            placeholder="Same as pickup"
+                        >
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="pickupDate">Pickup Date</label>
+                        <input 
+                            type="date" 
+                            id="pickupDate" 
+                            required
+                            min=""
+                        >
+                    </div>
+                    <div class="form-group">
+                        <label for="pickupTime">Pickup Time</label>
+                        <input 
+                            type="time" 
+                            id="pickupTime" 
+                            required
+                        >
+                    </div>
+                    <div class="form-group">
+                        <label for="dropoffDate">Drop-off Date</label>
+                        <input 
+                            type="date" 
+                            id="dropoffDate" 
+                            required
+                            min=""
+                        >
+                    </div>
+                    <div class="form-group">
+                        <label for="dropoffTime">Drop-off Time</label>
+                        <input 
+                            type="time" 
+                            id="dropoffTime" 
+                            required
+                        >
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="carType">Car Type</label>
+                        <select id="carType" required>
+                            <option value="economy">Economy</option>
+                            <option value="compact">Compact</option>
+                            <option value="midsize">Midsize</option>
+                            <option value="suv">SUV</option>
+                            <option value="luxury">Luxury</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="driverAge">Driver's Age</label>
+                        <input 
+                            type="number" 
+                            id="driverAge" 
+                            min="18" 
+                            max="99" 
+                            value="25" 
+                            required
+                        >
+                    </div>
+                </div>
+                <button type="submit" class="search-btn">Search Cars</button>
+            </form>
+            <div id="carResults" class="search-results">
+                <!-- Car results will be populated here -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 TravelPlanner. All rights reserved.</p>
+    </footer>
+</body>
+</html> 
